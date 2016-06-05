@@ -39,12 +39,6 @@ switch(process.env.npm_lifecycle_event) {
   case 'build':
     config = merge(
       common,
-      parts.setFreeVariable('process.env.NODE_ENV','production'),
-      parts.extractBundle({
-        name: 'vendor',
-        entries: ['react']
-      }),
-      parts.minify(),
       {
         devtool: 'source-map',
         output: {
@@ -55,6 +49,13 @@ switch(process.env.npm_lifecycle_event) {
           chunkFilename: '[chunkhash].js'
         }
       },
+      parts.clean(PATHS.build),
+      parts.setFreeVariable('process.env.NODE_ENV','production'),
+      parts.extractBundle({
+        name: 'vendor',
+        entries: ['react']
+      }),
+      parts.minify(),
       parts.setupCSS(PATHS.app)
     );
     break;

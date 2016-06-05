@@ -11,6 +11,8 @@
   "license": "ISC",
   "devDependencies": {
     "html-webpack-plugin": "^2.19.0",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "webpack-merge": "^0.13.0",
+    "webpack-validator": "^2.1.2"
   }
 }

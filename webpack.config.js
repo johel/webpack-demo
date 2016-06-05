@@ -8,7 +8,8 @@ const parts = require('./lib/parts');
 
 const PATHS = {
   app: path.join(__dirname, 'app'),
-  build: path.join(__dirname, 'build')
+  build: path.join(__dirname, 'build'),
+  style: path.join(__dirname, 'app', 'main.css')
 };
 
 
@@ -18,7 +19,8 @@ const common = {
   // We'll be using the latter form given it's
   // convenient with more complex configurations.
   entry: {
-    app: PATHS.app
+    app: PATHS.app,
+    style: PATHS.style
   },
   output: {
     path: PATHS.build,
@@ -56,7 +58,7 @@ switch(process.env.npm_lifecycle_event) {
         entries: ['react']
       }),
       parts.minify(),
-      parts.setupCSS(PATHS.app)
+      parts.extractCSS(PATHS.style)
     );
     break;
   default:
@@ -70,7 +72,7 @@ switch(process.env.npm_lifecycle_event) {
         host: process.env.HOST,
         port: process.env.PORT
       }),
-      parts.setupCSS(PATHS.app)
+      parts.setupCSS(PATHS.style) //remains setupCSS, so Hot Module Reload it is still enabled for css in development
     );
 }
 

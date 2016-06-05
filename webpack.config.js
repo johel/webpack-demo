@@ -39,6 +39,7 @@ switch(process.env.npm_lifecycle_event) {
   case 'build':
     config = merge(
       common,
+      parts.minify(),
       {
         devtool: 'source-map'
       },

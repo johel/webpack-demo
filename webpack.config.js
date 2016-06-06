@@ -28,6 +28,11 @@ const common = {
   output: {
     path: PATHS.build,
     filename: '[name].js'
+    // TODO: Set publicPath to match your GitHub project name
+    // E.g., '/kanban-demo/'. Webpack will alter asset paths
+    // based on this. You can even use an absolute path here
+    // or even point to a CDN.
+    //publicPath: ''
   },
   plugins: [
     new HtmlWebpackPlugin({
